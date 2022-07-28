@@ -1,4 +1,5 @@
 let modal = document.querySelector('.modal')
+let submit = document.querySelector('.submit')
 
 let myLibrary = []
 
@@ -24,7 +25,17 @@ window.onclick = (event) => {
     }
 }
 
+submit.addEventListener('click', addBookToLibrary)
+
 function addBookToLibrary() {
-    
+    let title = document.querySelector('.title')
+    title = title.value
+    localStorage.setItem('title',title)
+
+    let p = document.createElement('p')
+    p.textContent = title
+    document.querySelector('main').appendChild(p)
+
+    modal.style.display = "none"
 }
 
