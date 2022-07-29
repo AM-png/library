@@ -13,28 +13,29 @@ function Book(title,author,pages,read) {
     }
 }
 
-document.querySelector('.add').addEventListener('click', openModal)
-
-function openModal() {
+document.querySelector('.add').addEventListener('click', openModal = () => {
     modal.style.display = "block"
-}
 
-window.onclick = (event) => {
-    if (event.target == modal) {
-      modal.style.display = "none";
+    window.onclick = (event) => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
     }
-}
+})
 
 submit.addEventListener('click', addBookToLibrary)
 
 function addBookToLibrary() {
-    let title = document.querySelector('.title')
-    title = title.value
-    localStorage.setItem('title',title)
+    let title = document.querySelector('.title').value
+    let author = document.querySelector('.author').value
+    let pages = document.querySelector('.pages').value
+    let read = document.querySelector('.check').checked
+    localStorage.setItem(`${title} by ${author}`, `${pages}, read: ${read}`)
 
-    let p = document.createElement('p')
-    p.textContent = title
-    document.querySelector('main').appendChild(p)
+    let book = document.createElement('p')
+    book.textContent = title
+
+    document.querySelector('main').appendChild(book.textContent)
 
     modal.style.display = "none"
 }
