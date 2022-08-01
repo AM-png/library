@@ -33,7 +33,20 @@ function addBookToLibrary() {
 
     // create a book (card/section) where the book's info will be displayed
     let book = document.createElement('section')
-    book.style.cssText = "padding: 10px; border: 3px solid black; border-radius: 17px;"
+    book.style.cssText = "padding: 10px; border: 3px solid black; border-radius: 17px; display: flex; justify-content: space-between"
+
+    // create a button that deletes the section
+    let del = document.createElement('button')
+    del.classList.add('del')
+    del.textContent = "X"
+    del.style.cssText = "border: none; background: transparent"
+
+    // give the del button the ability to remove the book
+    del.addEventListener('click', deleteBook)
+    
+    function deleteBook() {
+        book.remove()
+    }
 
     // create book element to be displayed in the book section
     let bookInfo = document.createElement('p')
@@ -41,6 +54,9 @@ function addBookToLibrary() {
 
     // append bookInfo to book
     book.appendChild(bookInfo)
+
+    // append delete button to book
+    book.appendChild(del)
 
     // append book to main
     document.querySelector('main').appendChild(book)
