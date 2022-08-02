@@ -8,9 +8,6 @@ function Book(title,author,pages,read) {
     this.author = author
     this.pages = pages
     this.read = read
-    this.remove = function() {
-        return document.querySelector('section').remove()
-    }
 }
 
 document.querySelector('.add').addEventListener('click', openModal = () => {
@@ -35,6 +32,24 @@ function addBookToLibrary() {
     let book = document.createElement('section')
     book.style.cssText = "padding: 10px; border: 3px solid black; border-radius: 17px; display: flex; justify-content: space-between; align-items: baseline"
 
+    // create a button that changes read status
+    let status = document.createElement('button')
+    status.classList.add("read")
+    status.textContent = `${read ? "Read" : "Not Read"}`
+    status.style.cssText = "margin: 0"
+
+    // give the status buton the ability to change the read status and textContent
+    status.addEventListener('click', changeReadStatus)
+
+    function changeReadStatus() {
+        myLibrary.map(item => {
+            if (item.title === title) {
+                return item.read ? item.read = false : item.read = true
+            }
+        })
+        this.textContent === 'Read' ? this.textContent = "Not Read" : this.textContent = "Read"
+    }
+
     // create a button that deletes the section
     let remove = document.createElement('button')
     remove.classList.add('remove')
@@ -56,6 +71,9 @@ function addBookToLibrary() {
 
     // append bookInfo to book
     book.appendChild(bookInfo)
+
+    // append status button to book
+    book.appendChild(status)
 
     // append delete button to book
     book.appendChild(remove)
