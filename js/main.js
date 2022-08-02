@@ -36,16 +36,18 @@ function addBookToLibrary() {
     book.style.cssText = "padding: 10px; border: 3px solid black; border-radius: 17px; display: flex; justify-content: space-between"
 
     // create a button that deletes the section
-    let del = document.createElement('button')
-    del.classList.add('del')
-    del.textContent = "X"
-    del.style.cssText = "border: none; background: transparent"
+    let remove = document.createElement('button')
+    remove.classList.add('remove')
+    remove.textContent = "X"
+    remove.style.cssText = "border: none; background: transparent"
 
-    // give the del button the ability to remove the book
-    del.addEventListener('click', deleteBook)
+    // give the remove button the ability to remove the book from bookshelf and myLibrary array
+    remove.addEventListener('click', removeBook)
     
-    function deleteBook() {
+    function removeBook() {
         book.remove()
+        myLibrary = myLibrary.filter(item => item.title !== title)
+        return myLibrary
     }
 
     // create book element to be displayed in the book section
@@ -56,7 +58,7 @@ function addBookToLibrary() {
     book.appendChild(bookInfo)
 
     // append delete button to book
-    book.appendChild(del)
+    book.appendChild(remove)
 
     // append book to main
     document.querySelector('main').appendChild(book)
