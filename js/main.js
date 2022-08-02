@@ -33,13 +33,13 @@ function addBookToLibrary() {
 
     // create a book (card/section) where the book's info will be displayed
     let book = document.createElement('section')
-    book.style.cssText = "padding: 10px; border: 3px solid black; border-radius: 17px; display: flex; justify-content: space-between"
+    book.style.cssText = "padding: 10px; border: 3px solid black; border-radius: 17px; display: flex; justify-content: space-between; align-items: baseline"
 
     // create a button that deletes the section
     let remove = document.createElement('button')
     remove.classList.add('remove')
     remove.textContent = "X"
-    remove.style.cssText = "border: none; background: transparent"
+    remove.style.cssText = "font-size: large; padding: 5px; border: none; background: transparent"
 
     // give the remove button the ability to remove the book from bookshelf and myLibrary array
     remove.addEventListener('click', removeBook)
