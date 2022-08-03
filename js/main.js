@@ -68,7 +68,7 @@ function addBookToLibrary() {
     // create book element to be displayed in the book section
     let bookInfo = document.createElement('p')
     bookInfo.innerHTML = title
-    bookInfo.style.cssText = "color: white; display: flex; flex: 0 2 auto; flex-wrap: wrap"
+    bookInfo.style.cssText = "color: white; display: flex; flex-wrap: wrap"
 
     // append status button to book
     book.appendChild(status)
