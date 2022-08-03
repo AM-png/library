@@ -10,10 +10,6 @@
     margin: 0;
 }
 
-body {
-    background: honeydew;
-}
-
 li, .logo {
     text-align: center;
     padding: 10px;
@@ -22,7 +18,7 @@ li, .logo {
 .add {
     padding: 10px;
     border-radius: 10px;
-    background: coral;
+    background: rgb(70, 8, 139);
     color: white;
 }
 
@@ -35,13 +31,12 @@ main {
 }
 
 .row {
-    background: white;
-    height: 250px;
+    background: honeydew;
+    height: 100%;
     width: 100%;
     border: 5px solid black;
     display: flex;
-    align-items: flex-end;
-    flex-wrap:wrap
+    flex-wrap:wrap;
 }
 
 .modal {

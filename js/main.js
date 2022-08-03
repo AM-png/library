@@ -30,7 +30,7 @@ function addBookToLibrary() {
 
     // create a book (card/section) where the book's info will be displayed
     let book = document.createElement('section')
-    book.style.cssText = "text-align: center; background: brown; height: 230px; width: 100px; padding: 5px; border-radius: 10px; display: flex; flex-wrap: wrap; flex-direction: column-reverse; justify-content: space-between; align-items: center;"
+    book.style.cssText = `text-align: center; background: ${(new Date().getSeconds() > 50 ? 'brown' : new Date().getSeconds() > 40 ? '#120b3f' : new Date().getSeconds() > 30 ? '#075822' : new Date().getSeconds() > 20 ? "#0a594c" : new Date().getSeconds() > 10 ? '#45194a' : 'coral')}; height: 230px; width: 150px; padding: 5px; margin: 5px; border-radius: 10px; display: flex; flex-wrap: wrap; flex-direction: column-reverse; justify-content: space-between; align-items: center;`
 
     // create a button that changes read status
     let status = document.createElement('button')
