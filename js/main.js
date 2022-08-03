@@ -30,13 +30,13 @@ function addBookToLibrary() {
 
     // create a book (card/section) where the book's info will be displayed
     let book = document.createElement('section')
-    book.style.cssText = "padding: 10px; border: 3px solid black; border-radius: 17px; display: flex; justify-content: space-between; align-items: baseline"
+    book.style.cssText = "text-align: center; background: brown; height: 230px; width: 100px; padding: 5px; border-radius: 10px; display: flex; flex-wrap: wrap; flex-direction: column-reverse; justify-content: space-between; align-items: center;"
 
     // create a button that changes read status
     let status = document.createElement('button')
     status.classList.add("read")
     status.textContent = `${read ? "Read" : "Not Read"}`
-    status.style.cssText = "margin: 0"
+    status.style.cssText = "color: white; margin: 0; padding: 5px; background: transparent; border: 0;"
 
     // give the status buton the ability to change the read status and textContent
     status.addEventListener('click', changeReadStatus)
@@ -54,7 +54,7 @@ function addBookToLibrary() {
     let remove = document.createElement('button')
     remove.classList.add('remove')
     remove.textContent = "X"
-    remove.style.cssText = "font-size: large; padding: 5px; border: none; background: transparent"
+    remove.style.cssText = "color: white; font-size: large; padding: 5px; border: none; background: transparent"
 
     // give the remove button the ability to remove the book from bookshelf and myLibrary array
     remove.addEventListener('click', removeBook)
@@ -68,18 +68,19 @@ function addBookToLibrary() {
     // create book element to be displayed in the book section
     let bookInfo = document.createElement('p')
     bookInfo.innerHTML = title
-
-    // append bookInfo to book
-    book.appendChild(bookInfo)
+    bookInfo.style.cssText = "color: white; display: flex; flex: 0 2 auto; flex-wrap: wrap"
 
     // append status button to book
     book.appendChild(status)
+
+    // append bookInfo to book
+    book.appendChild(bookInfo)
 
     // append delete button to book
     book.appendChild(remove)
 
     // append book to main
-    document.querySelector('main').appendChild(book)
+    document.querySelector('.row').appendChild(book)
 
     // create Book object and add it to myLibrary array
     myLibrary.push(new Book(title,author,pages,read))
