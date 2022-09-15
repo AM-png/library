@@ -10,15 +10,33 @@
     margin: 0;
 }
 
-li, .logo {
-    text-align: center;
+body {
+    padding: 0 10px;    
+    background: honeydew;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: bottom;
     padding: 10px;
 }
 
+li, .logo {
+    display: flex;
+}
+
+.logo {
+    height: 80px
+}
+
 .add {
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
-    background: rgb(70, 8, 139);
+    border: 0;
+    font-size: large;
+    background: #7655BE;
     color: white;
 }
 
@@ -26,12 +44,11 @@ main {
     background: grey;
     height: 100vh;
     border: 5px solid black;
-    margin: 10px;
     padding: 10px;
 }
 
 .row {
-    background: honeydew;
+    background: coral;
     height: 100%;
     width: 100%;
     border: 5px solid black;
@@ -54,7 +71,7 @@ main {
 
 .modal-box {
     background: white;
-    margin: 25% auto;
+    margin: 15% auto;
     width: 300px;
     padding: 20px;
     border-radius: 10px;
