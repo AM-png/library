@@ -13,7 +13,7 @@ function Book(title,author,pages,read) {
 document.querySelector('.add').addEventListener('click', openModal = () => {
     modal.style.display = "block"
 
-    window.onclick = (event) => {
+    window.onclick = event => {
         if (event.target == modal) {
           modal.style.display = "none";
         }
@@ -28,9 +28,16 @@ function addBookToLibrary() {
     let pages = document.querySelector('.pages').value
     let read = document.querySelector('.check').checked
 
+    // create Book object and add it to myLibrary array
+    myLibrary.push(new Book(title,author,pages,read))
+
+    // create oc where the book will be
+    let oc = document.createElement('div')
+    oc.style.cssText = "height: 270px; width: 115px; text-align: center; padding-top: 10px"
+
     // create a book (card/section) where the book's info will be displayed
     let book = document.createElement('section')
-    book.style.cssText = `text-align: center; background: ${(new Date().getSeconds() > 50 ? 'brown' : new Date().getSeconds() > 40 ? '#120b3f' : new Date().getSeconds() > 30 ? '#075822' : new Date().getSeconds() > 20 ? "#0a594c" : new Date().getSeconds() > 10 ? '#45194a' : 'coral')}; height: 230px; width: 150px; padding: 5px; margin: 5px; border-radius: 10px; display: flex; flex-wrap: wrap; flex-direction: column-reverse; justify-content: space-between; align-items: center;`
+    book.style.cssText = `text-align: center; background: ${(new Date().getSeconds() > 50 ? 'brown' : new Date().getSeconds() > 40 ? '#120b3f' : new Date().getSeconds() > 30 ? '#075822' : new Date().getSeconds() > 20 ? "#0a594c" : new Date().getSeconds() > 10 ? '#45194a' : 'coral')}; height: 230px; width: 115px; padding: 40px 0 5px 0; margin: 0 0 0 0; border: 1px solid white; border-radius: 10px; display: flex; flex-wrap: wrap; flex-direction: column-reverse; justify-content: space-between; align-items: center;`
 
     // create a button that changes read status
     let status = document.createElement('button')
@@ -50,6 +57,11 @@ function addBookToLibrary() {
         this.textContent === 'Read' ? this.textContent = "Not Read" : this.textContent = "Read"
     }
 
+    // create author element to be displayed in the book section
+    let bookAuthor = document.createElement('p')
+    bookAuthor.innerHTML = author
+    bookAuthor.style.cssText = "color: white; display: flex; flex-wrap: wrap; border-top: 1px solid white; padding-top: 5px"
+
     // create a button that deletes the section
     let remove = document.createElement('button')
     remove.classList.add('remove')
@@ -60,31 +72,34 @@ function addBookToLibrary() {
     remove.addEventListener('click', removeBook)
     
     function removeBook() {
-        book.remove()
+        oc.remove()
         myLibrary = myLibrary.filter(item => item.title !== title)
         return myLibrary
     }
 
-    // create book element to be displayed in the book section
+    // create book element (title) to be displayed in the book section
     let bookInfo = document.createElement('p')
     bookInfo.innerHTML = title
-    bookInfo.style.cssText = "color: white; display: flex; flex-wrap: wrap"
+    bookInfo.style.cssText = "color: white; display: flex; flex-wrap: wrap; transform: rotate(-90deg)"
 
-    // append status button to book
-    book.appendChild(status)
+    // append author to book
+    book.appendChild(bookAuthor)
 
     // append bookInfo to book
     book.appendChild(bookInfo)
 
     // append delete button to book
-    book.appendChild(remove)
+    oc.appendChild(remove)
 
-    // append book to main
-    document.querySelector('.row').appendChild(book)
+    // append book to oc
+    oc.appendChild(book)
 
-    // create Book object and add it to myLibrary array
-    myLibrary.push(new Book(title,author,pages,read))
-    
+    // append status button to book
+    oc.appendChild(status)
+
+    // append oc to main
+    document.querySelector('.row').appendChild(oc)
+
     // save the book in localStorage
     localStorage.setItem(`${title} by ${author}`, `pages: ${pages}, read: ${read}`)
 
